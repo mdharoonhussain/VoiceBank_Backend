@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const auth = async(req,res,next)=>{
     try {
-     const token = req.body.headers.authorization.split(" ")[1] || req.body.headers.authorization;
+     const token = req.headers.authorization.split(" ")[1] || req.headers.authorization;
      const isTokenBlacklisted = await BlacklistModel.findOne({token});
      if(isTokenBlacklisted) return res.status(400).send({msg:"Session Expired Login Again!"});
  

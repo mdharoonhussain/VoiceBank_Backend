@@ -45,7 +45,7 @@ const login = async(req,res)=>{
 
 const logout = async(req,res)=>{
     try {
-        const token = req.body.headers.authorization.split(" ")[1] || req.body.headers.authorization;
+        const token = req.headers.authorization.split(" ")[1] || req.headers.authorization;
         console.log(token)
         const blacklisted = new BlacklistModel({"token":token});
         await blacklisted.save();
