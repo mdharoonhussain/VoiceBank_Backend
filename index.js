@@ -13,6 +13,10 @@ app.use('/uploads', express.static('uploads'));
 
 require("dotenv").config();
 
+app.get("/",(req,res)=>{
+    res.send("Hello World")
+})
+
 app.use("/voicebank/user", userRouter);
 app.use("/voicebank/admin",auth, adminRouter);
 app.use("/voicebank/voice",voiceRouter);
